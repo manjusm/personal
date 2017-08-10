@@ -1,3 +1,5 @@
+/* Selection sort */
+
 #include <stdio.h>
 
 int main()
@@ -14,6 +16,7 @@ int main()
     }
     printf("\n");
 
+    /* pick the minimum element and place it properly at the beginning */
     for (i = 0; i < n; i++){
         min = input[i];
         index = -1;
