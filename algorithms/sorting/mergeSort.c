@@ -11,13 +11,13 @@ void merge(int input[], int low, int mid, int high)
     int temp[10] = {0};
 
     while(i <= mid && j <= high) {
-        
         if (input[i] <= input[j]){
             temp[k++] = input[i++];
         } else {
             temp[k++] = input[j++];
         }
     }
+
     while(i <= mid){
         temp[k++] = input[i++];
     }
