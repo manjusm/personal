@@ -10,48 +10,9 @@ int n; // Number of vertices
 int adj_matrix[MAX][MAX]; // adjacency matrix
 int state[MAX];
 
-/* QUEUE */
-int  queue[MAX], front = -1, rear = -1;
-void write(int vertex);
-int  read();
-int  is_empty();
-
 void create_graph();
-void bf_traversal();
-void BFS(int vertex);
-
-int is_empty()
-{
-    if (front == -1 || front > rear){
-        return 1;
-    }
-    return 0;
-}
-
-
-int read()
-{
-    if (is_empty()){
-        printf("\nqueue is empty\n");
-        exit(0);
-    }
-
-    return queue[front++];
-}
-
-void write(int vertex)
-{
-    if (rear == MAX - 1){
-        printf("\nOverflow\n");
-        return;
-    }
-    
-    if(front == -1){
-        front++;
-    }
-
-    queue[++rear] = vertex;
-}
+void df_traversal();
+void DFS(int vertex);
 
 void create_graph()
 {
@@ -86,26 +47,20 @@ void create_graph()
     return;
 }
 
-void BFS(int vertex)
+void DFS(int vertex)
 {
     int i;
-    write(vertex);
-
-    while (!is_empty()){
-        vertex = read();
-        printf("%d\t", vertex); 
-        state[vertex] = visited;
-
-        for (i = 1; i <= n; i++){
-            if (adj_matrix[vertex][i] == 1 && state[i] == init){
-                state[i] = tobevisited;
-                write(i);
-            }
+    
+    state[vertex] = visited;
+    printf("%d\t", vertex);
+    for (i = 1; i <= n; i++){
+        if (adj_matrix[vertex][i] == 1 && state[i] == init){
+            DFS(i);
         }
     }
 }
 
-void bf_traversal()
+void df_traversal()
 {
     int v;
     for ( v = 1; v <= n; v++){
@@ -113,7 +68,7 @@ void bf_traversal()
     }
     printf("\nEnter the vertex to start traversal\n");
     scanf("%d", &v);
-    BFS(v);
+    DFS(v);
     printf("\n");
     return;
 }
@@ -121,6 +76,6 @@ void bf_traversal()
 int main()
 {
     create_graph();
-    bf_traversal();
+    df_traversal();
     return 0;
 }
