@@ -8,6 +8,11 @@ typedef struct node_s
     struct node_s *right;
 } node_t;
 
+void isBST(node_t *rootptr)
+{
+
+    return;
+}
 
 node_t * newNode(int data)
 {
@@ -75,8 +80,6 @@ int findmax(node_t *ptr)
         return ptr->data;
     }
     findmax(ptr->right);
-    
-    return;
 }
 
 int findmin(node_t *ptr)
@@ -89,8 +92,6 @@ int findmin(node_t *ptr)
         return ptr->data;
     }
     findmin(ptr->left);
-    
-    return;
 }
 
 int findHeight(node_t *ptr)
