@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <netdb.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
@@ -67,5 +68,5 @@ int main(int argc, char *argv[])
     close(sock_fd);
     printf("Client ended sucessfully\n");
     
-    return;
+    return 0;
 } 

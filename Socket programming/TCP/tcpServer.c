@@ -5,6 +5,7 @@
 #include <netdb.h>
 #include <sys/types.h>
 #include <string.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
     char buff[12];
 
     if (2 > argc){
-        printf("Usage : %s <port>\n");
+        printf("Usage : %s <port>\n", argv[0]);
         exit(0);
     }
     port = (unsigned short)(atoi(argv[1]));
@@ -66,5 +67,5 @@ int main(int argc, char *argv[])
     close(sockfd);
 
     printf("Socket closed successfully\n");
-    return;
+    return 0;
 }
