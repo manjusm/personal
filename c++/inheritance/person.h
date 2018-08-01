@@ -8,7 +8,9 @@ class person
 {
     private:
         string name;
-        int age;
+
+    protected:
+    int age;
 
     public:
     person();

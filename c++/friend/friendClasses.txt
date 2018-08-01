@@ -1,0 +1,7 @@
+One class can define other function as its Friend.
+It will have access to all members of the first class including the private memebers.
+
+A good example for friend classes is something like "handle-body" design.
+
+Body defines the Handle as the friend. Handle will have access to all the memebers of the body class.
+Body is more like private to the external world and Handle is the public which controls the access to body.
