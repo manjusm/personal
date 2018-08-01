@@ -1,0 +1,22 @@
+1. Base class
+2. Derived class
+
+class vehicle 
+{
+    public:
+        int eom;
+        string manufacturer;
+        string owner;
+
+ }
+
+
+ class car:
+ public vehicle
+ {
+     public:
+     string color;
+     int capacity;
+ }
+
+C++ provides 3 types of inheritance. Public, Protected and Private.
