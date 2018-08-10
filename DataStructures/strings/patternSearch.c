@@ -5,8 +5,13 @@ int patternSearch(char string[], char pattern[]) {
 
     int stringLength = strlen(string);
     int patternLength = strlen(pattern);
-    
+
+
     printf("string length : %d\npattern length : %d\n", stringLength, patternLength);
+
+    if (stringLength < patternLength) {
+        return -1;
+    }
 
     int i = 0;
     int j = 0;
@@ -19,7 +24,7 @@ int patternSearch(char string[], char pattern[]) {
         for (j = 0; j < patternLength; j++) {
             if (pattern[j] == string[k]) {
                 matchedLength++;
-                if (patternLength == matchedLength) {
+                if (matchedLength == patternLength) {
                     return i;
                 }
                 k++;
@@ -35,7 +40,7 @@ int patternSearch(char string[], char pattern[]) {
 int main() 
 {
     char string[] = "Manjunatha S M";
-    char pattern[] = "tha S M";
+    char pattern[] = "anju";
     
     int ret = patternSearch(string, pattern);
     if (ret != -1) {
