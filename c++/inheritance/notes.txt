@@ -20,3 +20,6 @@ class vehicle
  }
 
 C++ provides 3 types of inheritance. Public, Protected and Private.
+
+Protected : protected members are private to the external world but 
+            public to the derived class.
