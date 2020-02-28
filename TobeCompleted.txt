@@ -1,6 +1,6 @@
-1. c++              -- September 2018
-2. BGP              -- October 2018
-4. L3VPN            -- October 2018
-5. Containers       -- November 2018
-6. Go language      -- December 2018
-7. Cloud native     -- January 2019
+1. c++              
+2. BGP             
+4. L3VPN          
+5. Containers    
+6. Go language  
+7. Cloud native
