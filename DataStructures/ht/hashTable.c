@@ -13,7 +13,7 @@ hashTable_t * createHashTable()
     hashTable_t *ht = (hashTable_t *) malloc(sizeof(hashTable_t));
     ht->size = 10;
     ht->count = 0;
-    ht->hashItems = (hashItem_t *)malloc(ht->size * sizeof(hashItem_t));
+    ht->hashItems = (hashItem_t **)calloc(ht->size, sizeof(hashItem_t));
     return ht;
 }
 
@@ -33,6 +33,7 @@ void deleteHashTable(hashTable_t *ht)
             ht->hashItems[i] = NULL;
         }
     }
+    free(ht->hashItems);
     free(ht);
 }
 

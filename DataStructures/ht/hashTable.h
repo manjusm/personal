@@ -9,5 +9,5 @@ typedef struct hashTable_s
 {
     int         size;   // size of the hash table
     int         count;  // Indicates the current number of items in hash table
-    hashItem_t   *hashItems[];
+    hashItem_t   **hashItems;
 }hashTable_t;
