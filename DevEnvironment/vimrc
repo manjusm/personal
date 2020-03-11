@@ -50,3 +50,6 @@ set tags+=~/.vim/tags/qt4
 
 source ~/.vim/plugins/cscope_maps.vim
 source ~/.vim/plugins/taglist.vim
+
+"Remove all trailing white spaces
+autocmd BufWritePre * :%s/\s\+$//e
