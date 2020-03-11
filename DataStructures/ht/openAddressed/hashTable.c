@@ -44,12 +44,14 @@ void insert(int key, char *value, hashTable_t *ht)
     item->key = key;
     item->value = strdup(value);
     ht->hashItems[index] = item;
+    ht->count++;
     return;
 }
 
 void delete(int key, hashTable_t *ht)
 {
     int index = hashFunction(key);
+    ht->count--;
     free(ht->hashItems[index]->value);
     free(ht->hashItems[index]);
     ht->hashItems[index] = NULL;
@@ -75,11 +77,13 @@ int main()
 {
     hashTable_t *ht = createHashTable();
     insert(2, "Manju", ht);
+    insert(3, "Manjunatha", ht);
+    insert(4, "Manjunatha S M", ht);
     hashItem_t *item = retrieve(2, ht);
-    printf("%d %s\n", item->key, item->value);
+    printf("%d %s %d\n", item->key, item->value, ht->count);
     update(2, "Manju SM", ht);
     item = retrieve(2, ht);
-    printf("%d %s\n", item->key, item->value);
+    printf("%d %s %d\n", item->key, item->value, ht->count);
     delete(2, ht);
     deleteHashTable(ht);
     return 0;
