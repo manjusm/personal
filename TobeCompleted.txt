@@ -1,6 +1,6 @@
-1. c++              
-2. BGP             
-4. L3VPN          
-5. Containers    
-6. Go language  
+1. c++
+2. BGP
+4. L3VPN
+5. Containers
+6. Go language
 7. Cloud native
