@@ -29,7 +29,7 @@ int getBalance(avl_t *ptr)
 {
     if (NULL == ptr) {
         return 0;
-    } 
+    }
     return (height(ptr->left) - height(ptr->right));
 }
 
@@ -58,7 +58,7 @@ void insert(avl_t **ptr, int data)
     }
 
     if (data > (*ptr)->data) {
-        insert(&((*ptr)->right), data);   
+        insert(&((*ptr)->right), data);
     } else if (data < (*ptr)->data) {
         insert(&((*ptr)->left), data);
     } else {
@@ -68,11 +68,11 @@ void insert(avl_t **ptr, int data)
     (*ptr)->height = 1 + max(height((*ptr)->left),
                              height((*ptr)->right));
 
-    /* Check the balance factor of this node to check 
+    /* Check the balance factor of this node to check
      * whether this node has become unbalanced */
     int balance = getBalance(*ptr);
-    
-    /* If this node is unbalanced, there are 4 
+
+    /* If this node is unbalanced, there are 4
      * possible cases */
 
     /* Balance factor > 1 : left heavy */
@@ -89,7 +89,7 @@ void insert(avl_t **ptr, int data)
         }
     }
 
-    /* Balance factor < -1 : right heavy */    
+    /* Balance factor < -1 : right heavy */
     if (balance < -1) {
         /* right right case */
         if ((*ptr)->data < data) {
@@ -106,7 +106,7 @@ void insert(avl_t **ptr, int data)
 }
 
 int height(avl_t *ptr)
-{ 
+{
     if (!ptr){
         return -1;
     }
@@ -115,7 +115,7 @@ int height(avl_t *ptr)
     }
     int lh = height(ptr->left);
     int rh = height(ptr->right);
-    
+
     ptr->height = (1 + ((lh > rh) ? lh : rh));
     return (ptr->height);
 }
@@ -148,10 +148,10 @@ int main()
     insert(&root, 35);
     insert(&root, 50);
     insert(&root, 2);
-    //tHeight = height(root);    
+    //tHeight = height(root);
     printf("Height of the tree : %d\n", tHeight);
     printf("Print tree in InOrder:\n");
-    printInOrder(root);    
+    printInOrder(root);
     printf("\n");
     return;
 }
