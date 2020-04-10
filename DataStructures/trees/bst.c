@@ -1,12 +1,14 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-typedef struct node_s 
+typedef struct node_s
 {
     int data;
     struct node_s *left;
     struct node_s *right;
 } node_t;
+
+int findHeight(node_t *ptr);
 
 void isBST(node_t *rootptr)
 {
@@ -46,7 +48,7 @@ void preorder(node_t *ptr)
     }
     printf("%d\t", ptr->data);
     preorder(ptr->left);
-    preorder(ptr->right); 
+    preorder(ptr->right);
     return;
 }
 void postorder(node_t *ptr)
@@ -55,7 +57,7 @@ void postorder(node_t *ptr)
         return;
     }
     postorder(ptr->left);
-    postorder(ptr->right); 
+    postorder(ptr->right);
     printf("%d\t", ptr->data);
     return;
 }
@@ -66,10 +68,38 @@ void inorder(node_t *ptr)
     }
     inorder(ptr->left);
     printf("%d\t", ptr->data);
-    inorder(ptr->right); 
+    inorder(ptr->right);
     return;
 }
 
+void printGivenLevel(node_t *ptr, int level)
+{
+    if (level == 1)
+    {
+        printf("%d\t", ptr->data);
+        return;
+    }
+    else
+    {
+        printGivenLevel(ptr->left, level-1);
+        printGivenLevel(ptr->right, level-1);
+    }
+    return;
+}
+
+void printLevelOrder(node_t *ptr)
+{
+    int height = findHeight(ptr);
+    int i;
+
+    printf("Level order : ");
+    for (i = 1; i <= height; i++)
+    {
+        printGivenLevel(ptr, i);
+    }
+    printf("\n");
+    return;
+}
 int findmax(node_t *ptr)
 {
     if (NULL == ptr){
@@ -97,12 +127,24 @@ int findmin(node_t *ptr)
 int findHeight(node_t *ptr)
 {
     if (NULL == ptr){
-        return -1;
+        return 0;
     }
     int lheight = findHeight(ptr->left);
     int rheight = findHeight(ptr->right);
-    
+
     return ( (lheight > rheight)? (lheight+1):(rheight+1));
+}
+
+void deleteTree(node_t *ptr)
+{
+    if (!ptr)
+    {
+        return;
+    }
+    deleteTree(ptr->left);
+    deleteTree(ptr->right);
+    free(ptr);
+    return;
 }
 
 int main ()
@@ -133,5 +175,8 @@ int main ()
     printf("max : %d\n", max);
     height = findHeight(rootPtr);
     printf("height : %d\n", height);
+    printLevelOrder(rootPtr);
+    deleteTree(rootPtr);
+    rootPtr = NULL;
     return 0;
 }
