@@ -1,0 +1,9 @@
+Can't change precedence of an operator.
+this --> self referential pointer.
+constructor has no return type/value.
+Default constructor - constructor whose signature is void.
+
+C++ doesn't allow multiple destructors. There is only one with void or no parameters.
+
+When defining/overloading operator, one of the arguements must be user defined type or enumerated type.
+We can't overload for native types.
