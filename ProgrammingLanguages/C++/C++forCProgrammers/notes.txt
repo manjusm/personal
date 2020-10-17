@@ -7,3 +7,5 @@ C++ doesn't allow multiple destructors. There is only one with void or no parame
 
 When defining/overloading operator, one of the arguements must be user defined type or enumerated type.
 We can't overload for native types.
+
+STL - Standard Template Library
