@@ -9,3 +9,11 @@ typedef struct graph_s
     int v;
     entry_t **entryItem;
 }graph_t;
+
+
+typedef struct node_s
+{
+    int data;
+    struct node_s *next;
+} node_t;
+
