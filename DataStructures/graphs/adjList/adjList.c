@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "graph.h"
 
 const int EMPTY=-1;
@@ -125,18 +126,19 @@ void createGraph(graph_t *graph)
 {
     graph->entryItem = (entry_t **) malloc(sizeof(entry_t) * graph->v);
     memset(graph->entryItem, 0, sizeof(entry_t) * graph->v);
-    int node = 0;
+    int weight = INT_MAX;
 
     for (int i = 0; i < graph->v; i++)
     {
         for (int j = 0; j < graph->v; j++)
         {
-            printf("Is there an edge from vertex %d to %d : ", i, j);
-            scanf("%d", &node);
-            if (node)
+            printf("Is there an edge from vertex %d to %d (If Yes, Enter weight/distance): ", i, j);
+            scanf("%d", &weight);
+            if (weight)
             {
                 entry_t *entry = (entry_t *) malloc(sizeof(entry_t));
                 entry->connectedVertex = (j);
+                entry->weight = weight;
                 entry->next = NULL;
 
                 if(!graph->entryItem[i])
@@ -280,6 +282,11 @@ void BFS( graph_t *graph, int startingNode)
     return;
 }
 
+void dijkstra(graph_t *graph, int src)
+{
+    return;
+}
+
 int main()
 {
     graph_t *graph = initGraph();
@@ -289,6 +296,7 @@ int main()
     showGraph(graph);
     DFS(graph, 0);
     BFS(graph, 0);
+    dijkstra(graph, 0);
     deleteGraph(graph);
     return 0;
 }

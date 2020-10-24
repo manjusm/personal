@@ -1,6 +1,7 @@
 typedef struct entry_s
 {
     int connectedVertex;
+    int weight;
     struct entry_s *next;
 } entry_t;
 
