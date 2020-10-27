@@ -282,8 +282,74 @@ void BFS( graph_t *graph, int startingNode)
     return;
 }
 
+int findMin(int openSet[], int count)
+{
+    int min = INT_MAX;
+    int indexOfMin = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+        if (openSet[i] < min && openSet[i])
+        {
+            min = openSet[i];
+            indexOfMin = i;
+        }
+    }
+    return indexOfMin;
+}
+
 void dijkstra(graph_t *graph, int src)
 {
+    int closedSet[graph->v];
+    int openSet[graph->v];
+
+    for (int i = 0; i < graph->v; i++)
+    {
+        closedSet[i] = openSet[i] = INT_MAX;
+    }
+
+    closedSet[src] = 0; //Trivial case.
+    openSet[src] = 0;
+    entry_t *entry = graph->entryItem[src];
+    if (NULL == entry)
+    {
+        printf("No path from the source vertex specified\n");
+        return;
+    }
+    int indexOfMin = src;
+    int count = graph->v;
+
+    while(count)
+    {
+        while(entry)
+        {
+            if (closedSet[entry->connectedVertex] != INT_MAX)
+            {
+                entry = entry->next;
+                continue;
+            }
+            else if (openSet[entry->connectedVertex] == INT_MAX)
+            {
+                openSet[entry->connectedVertex] = entry->weight + closedSet[indexOfMin];
+            }
+            else if (openSet[entry->connectedVertex] > (entry->weight + closedSet[indexOfMin]))
+            {
+                openSet[entry->connectedVertex] = entry->weight + closedSet[indexOfMin];
+            }
+            entry = entry->next;
+        }
+        indexOfMin = findMin(openSet, graph->v);
+        closedSet[indexOfMin] = openSet[indexOfMin];
+        entry = graph->entryItem[indexOfMin];
+        openSet[indexOfMin] = 0;
+        count--;
+    }
+
+    for (int i = 0; i < graph->v; i++)
+    {
+        printf("%d\t", closedSet[i]);
+    }
+
     return;
 }
 
